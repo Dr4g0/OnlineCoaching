@@ -36,5 +36,9 @@ namespace OnlineCoaching.Models
         public virtual ICollection<Certificate> Certificates { get; set; }
 
         public virtual ICollection<Offer> Offers { get; set; }
+
+        public int LevelID { get; set; }
+
+        public virtual Level Level { get; set; }
     }
 }

@@ -9,8 +9,10 @@ namespace OnlineCoaching.Models
         [Required]
         public string Content { get; set; }
 
+        public int RatingID { get; set; }
+
         [Required]
-        public int RatingValue { get; set; }
+        public virtual Rating Rating { get; set; }
 
         public int UserID { get; set; }
 

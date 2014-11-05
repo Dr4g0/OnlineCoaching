@@ -10,6 +10,7 @@
         public Offer()
         {
             this.Feedbacks = new HashSet<Feedback>();
+            this.Comments = new HashSet<Comment>();
             this.IsNewCategory = false;
         }
 
@@ -34,6 +35,8 @@
         public bool IsNewCategory { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
 
         public string OfferPictureURL { get; set; }
     }
