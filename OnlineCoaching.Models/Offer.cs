@@ -11,6 +11,7 @@
         {
             this.Feedbacks = new HashSet<Feedback>();
             this.Comments = new HashSet<Comment>();
+            this.DateCreated = DateTime.Now;
             this.IsNewCategory = false;
         }
 
@@ -39,5 +40,20 @@
         public virtual ICollection<Comment> Comments { get; set; }
 
         public string OfferPictureURL { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        public double GetOfferRating()
+        {
+            if (this.Feedbacks.Count()==0)
+            {
+                return 0;
+            }
+
+            var sumRatings = this.Feedbacks.Sum(f => Convert.ToDouble(f.Rating));
+            var countFeedbacks = this.Feedbacks.Count();
+
+            return sumRatings / countFeedbacks;
+        }
     }
 }

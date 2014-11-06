@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineCoaching.Models
 {
@@ -15,6 +16,7 @@ namespace OnlineCoaching.Models
         {
             this.Certificates = new HashSet<Certificate>();
             this.Offers = new HashSet<Offer>();
+            this.IsCoach = false;
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager)
@@ -40,5 +42,18 @@ namespace OnlineCoaching.Models
         public int LevelID { get; set; }
 
         public virtual Level Level { get; set; }
+
+        public double GetCoachRating()
+        {
+            if (!this.IsCoach)
+            {
+                return 0;
+            }
+            var feedbacks = this.Offers.SelectMany(o => o.Feedbacks);
+            var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
+            var countFeedbacks = feedbacks.Count();
+
+            return sumRatings / countFeedbacks;
+        }
     }
 }

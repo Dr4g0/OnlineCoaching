@@ -22,3 +22,44 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.home-intro-left {
+    background: url("../Content/images/peak.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #f1f2f3;
+}
+
+.jumbotron {
+    height: 400px;
+}
+
+.home-intro-right-image {
+    background: url("images/coach.jpg");
+    height: 200px;
+    background-repeat: no-repeat;
+    margin-top:0
+}
+
+.home-intro-right {
+    background: url("images/deal.jpg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    color: #ffffff;
+    background-color:#f1f2f3;
+}
+
+.home-intro-right-text{
+    padding-top:70px
+}
+
+.left-intro-h1 {
+    color: #ffffff !important;
+    margin-bottom: 40px;
+}
+
+.left-intro-content {
+    color: #121111 ;
+}

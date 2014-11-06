@@ -161,6 +161,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Factories\CoachFactory.cs" />
+    <Compile Include="Factories\BaseFactory.cs" />
+    <Compile Include="Factories\OfferFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,6 +176,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\coach.jpg" />
+    <Content Include="Content\images\deal.jpg" />
+    <Content Include="Content\images\peak.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -239,6 +245,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OnlineCoaching.Data\OnlineCoaching.Data.csproj">
+      <Project>{5de1d3f4-a9ea-4650-850f-97547ed783f4}</Project>
+      <Name>OnlineCoaching.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineCoaching.Models\OnlineCoaching.Models.csproj">
       <Project>{d6bcb317-dc07-40e1-b7fe-e83f3f56b928}</Project>
       <Name>OnlineCoaching.Models</Name>
