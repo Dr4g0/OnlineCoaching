@@ -8,9 +8,14 @@
     {
         protected IOnlineCoachingData db;
 
-        public BaseFactory()
+        public BaseFactory(IOnlineCoachingData db)
         {
-            this.db = new OnlineCoachingData(new OnlineCoachingDbContext());
+            this.db = db;
+        }
+
+        public BaseFactory()
+            : this(new OnlineCoachingData())
+        {
         }
     }
 }

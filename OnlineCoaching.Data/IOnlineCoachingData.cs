@@ -9,7 +9,7 @@
     {
         IRepository<AppUser> Users { get; }
 
-        IRepository<Category> Categories { get; }
+        IRepository<CoachCategory> Categories { get; }
 
         IRepository<Certificate> Certificates { get; }
 

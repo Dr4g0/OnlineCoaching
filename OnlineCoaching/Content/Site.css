@@ -24,7 +24,7 @@ textarea {
 }
 
 .home-intro-left {
-    background: url("../Content/images/peak.jpg");
+    background: url("../Content/images/HomePage/peak.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #f1f2f3;
@@ -35,14 +35,14 @@ textarea {
 }
 
 .home-intro-right-image {
-    background: url("images/coach.jpg");
+    background: url("images/HomePage/coach.jpg");
     height: 200px;
     background-repeat: no-repeat;
     margin-top:0
 }
 
 .home-intro-right {
-    background: url("images/deal.jpg");
+    background: url("images/HomePage/deal.jpg");
     background-repeat: no-repeat;
     background-size:contain;
     padding-left: 10px !important;

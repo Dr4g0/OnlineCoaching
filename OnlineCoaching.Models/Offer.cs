@@ -31,7 +31,7 @@
         public int CoachingCategoryID { get; set; }
 
         [Required]
-        public virtual Category CoachingCategory { get; set; }
+        public virtual CoachCategory CoachingCategory { get; set; }
 
         public bool IsNewCategory { get; set; }
 

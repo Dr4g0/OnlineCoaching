@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
+    <Compile Include="CoachCategory.cs" />
     <Compile Include="Certificate.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Feedback.cs" />

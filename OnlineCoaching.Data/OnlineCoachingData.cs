@@ -10,12 +10,16 @@
     public class OnlineCoachingData : IOnlineCoachingData
     {
         private DbContext context;
-        private IDictionary<Type, object> repositories;
+        private IDictionary<Type, object> repositories = new Dictionary<Type, object>();
 
         public OnlineCoachingData(DbContext context)
         {
             this.context = context;
-            this.repositories = new Dictionary<Type, object>();
+        }
+
+        public OnlineCoachingData()
+            : this(new OnlineCoachingDbContext())
+        {
         }
 
         public IRepository<AppUser> Users
@@ -26,11 +30,11 @@
             }
         }
 
-        public IRepository<Category> Categories
+        public IRepository<CoachCategory> Categories
         {
             get
             {
-                return this.GetRepository<Category>();
+                return this.GetRepository<CoachCategory>();
             }
         }
 

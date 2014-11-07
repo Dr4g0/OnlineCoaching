@@ -3,7 +3,7 @@ namespace OnlineCoaching.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Category
+    public class CoachCategory
     {
         public int ID { get; set; }
 

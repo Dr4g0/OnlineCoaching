@@ -25,7 +25,7 @@
 
         public IDbSet<Offer> Offers { get; set; }
 
-        public IDbSet<Category> Categories { get; set; }
+        public IDbSet<CoachCategory> Categories { get; set; }
 
         public IDbSet<Certificate> Certificates { get; set; }
 
