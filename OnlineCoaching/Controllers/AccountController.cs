@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineCoaching.Models;
+using OnlineCoaching.ViewModels.Account;
 
 namespace OnlineCoaching.Controllers
 {
@@ -163,6 +164,7 @@ namespace OnlineCoaching.Controllers
 
                 if (user.IsCoach)
                 {
+                    user.Age = model.Age;
                     user.AboutMe = model.AboutMe;
                 }
 

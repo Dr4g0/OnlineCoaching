@@ -2,31 +2,25 @@
 {
     using System;
     using System.Linq;
-    using OnlineCoaching.Models;
-    using System.Collections.Generic;
     using OnlineCoaching.Data;
+    using AutoMapper.QueryableExtensions;
+    using OnlineCoaching.ViewModels.Coaches;
+using OnlineCoaching.Models;
 
     public class CoachFactory : BaseFactory
     {
-        public CoachFactory(IOnlineCoachingData db)
-            : base(db)
-        {
-        }
-        public IQueryable<CoachProfileViewModel> GetTopCoaches(int first)
+        public IQueryable<CoachProfileViewModel> GetAll()
         {
             return this.db.Users
-                .All()
-                .OrderByDescending(u => u.GetCoachRating())
-                .Take(first)
-                .Select(CoachProfileViewModel.FromCoach);
+                .All().Where(u=>u.IsCoach)
+                .Project().To<CoachProfileViewModel>();
         }
 
-        public IQueryable<CoachProfileViewModel> GetAllCoaches()
+        public IQueryable<CoachProfileViewModel> GetTopCoaches(int first)
         {
-            return this.db.Users
-                .All()
+            return this.GetAll()
                 .OrderByDescending(u => u.GetCoachRating())
-                .Select(CoachProfileViewModel.FromCoach);
+                .Take(first);
         }
     }
 }

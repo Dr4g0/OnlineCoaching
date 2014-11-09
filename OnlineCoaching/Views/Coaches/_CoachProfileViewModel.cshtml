@@ -1,6 +1,7 @@
-﻿@model OnlineCoaching.Models.CoachProfileViewModel
+﻿@model OnlineCoaching.ViewModels.Coaches.CoachProfileViewModel
 
 <li class="list-group-item">
+    <div class="text-center">Username: <strong>@Model.Username</strong></div>
     <img src="@Model.PictureURL" />
     <div class="row">
         <div class="col-md-6">
@@ -19,6 +20,6 @@
         </div>
     </div>
     <div>
-        About Me: @Model.AboutMe
+        Skills: @Model.AboutMe
     </div>
 </li>

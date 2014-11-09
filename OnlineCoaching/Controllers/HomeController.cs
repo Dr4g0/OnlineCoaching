@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OnlineCoaching.Data;
+using OnlineCoaching.Factories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,21 +12,9 @@ namespace OnlineCoaching.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var coachesFactory = new CoachFactory();
+            var topFiveCoaches = coachesFactory.GetAll();
+            return View(topFiveCoaches);
         }
     }
 }

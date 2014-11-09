@@ -44,18 +44,7 @@ namespace OnlineCoaching.Models
 
         public virtual CoachingLevel CoachingLevel { get; set; }
 
-        public double GetCoachRating()
-        {
-            if (!this.IsCoach)
-            {
-                return 0;
-            }
-            var feedbacks = this.Offers.SelectMany(o => o.Feedbacks);
-            var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
-            var countFeedbacks = feedbacks.Count();
-
-            return sumRatings / countFeedbacks;
-        }
+       
        
 
     }

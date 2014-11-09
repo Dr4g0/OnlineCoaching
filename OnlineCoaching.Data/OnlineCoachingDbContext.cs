@@ -7,8 +7,8 @@
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using OnlineCoaching.Data.Migrations;
     using OnlineCoaching.Models;
+    using OnlineCoaching.Data.Migrations;
 
     public class OnlineCoachingDbContext : IdentityDbContext<AppUser>
     {

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using OnlineCoaching.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineCoaching.Models
+namespace OnlineCoaching.ViewModels.Account
 {
     public class ExternalLoginConfirmationViewModel
     {
