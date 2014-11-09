@@ -63,11 +63,11 @@
             }
         }
 
-        public IRepository<Level> Levels
+        public IRepository<CoachingLevel> Levels
         {
             get
             {
-                return this.GetRepository<Level>();
+                return this.GetRepository<CoachingLevel>();
 
             }
         }

@@ -7,9 +7,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Level
+    public class CoachingLevel
     {
-        public Level()
+        public CoachingLevel()
         {
             this.Coaches = new HashSet<AppUser>();
         }

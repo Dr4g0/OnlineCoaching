@@ -38,21 +38,21 @@ textarea {
     background: url("images/HomePage/coach.jpg");
     height: 200px;
     background-repeat: no-repeat;
-    margin-top:0
+    margin-top: 0;
 }
 
 .home-intro-right {
     background: url("images/HomePage/deal.jpg");
     background-repeat: no-repeat;
-    background-size:contain;
+    background-size: contain;
     padding-left: 10px !important;
     padding-right: 10px !important;
     color: #ffffff;
-    background-color:#f1f2f3;
+    background-color: #f1f2f3;
 }
 
-.home-intro-right-text{
-    padding-top:70px
+.home-intro-right-text {
+    padding-top: 70px;
 }
 
 .left-intro-h1 {
@@ -61,5 +61,19 @@ textarea {
 }
 
 .left-intro-content {
-    color: #121111 ;
+    color: #121111;
+}
+
+#is-coach-checkbox {
+    vertical-align: middle;
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+    margin: 5px !important;
+    margin-top: 10px !important;
+}
+
+#coach-form:not(:checked) {
+    display: none;
 }

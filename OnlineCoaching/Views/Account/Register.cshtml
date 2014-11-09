@@ -12,6 +12,12 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
+        @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
@@ -30,12 +36,39 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="tb-picture" class="col-md-2 control-label">Picture</label>
+        <div class="col-md-10">
+            <input class="form-control" type="file" id="tb-picture" />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.IsCoach, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.IsCoach, new { @id = "is-coach-checkbox", @value = false })
+        </div>
+    </div>
+    <div id="coach-form">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Age, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.AboutMe, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.AboutMe, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+            <input type="submit" class="btn btn-info" value="Register" />
         </div>
     </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@section Scripts{
+    @Scripts.Render("~/bundle/jqueryval");
+    @Scripts.Render("~/Scripts/AppScripts/register-form.js")
 }

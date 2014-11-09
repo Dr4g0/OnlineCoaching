@@ -1,0 +1,24 @@
+﻿@model OnlineCoaching.Models.CoachProfileViewModel
+
+<li class="list-group-item">
+    <img src="@Model.PictureURL" />
+    <div class="row">
+        <div class="col-md-6">
+            Age: @Model.Age
+        </div>
+        <div class="col-md-6">
+            Level: @Model.CoachingLevel
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="#">Certificates: @Model.Certificates.Count()</a>
+        </div>
+        <div class="col-md-6">
+            <a href="#">Offers: @Model.Offers.Count()</a>
+        </div>
+    </div>
+    <div>
+        About Me: @Model.AboutMe
+    </div>
+</li>

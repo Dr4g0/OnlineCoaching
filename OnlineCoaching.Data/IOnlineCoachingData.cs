@@ -17,7 +17,7 @@
 
         IRepository<Feedback> Feedbacks { get; }
 
-        IRepository<Level> Levels { get; }
+        IRepository<CoachingLevel> Levels { get; }
 
         IRepository<Offer> Offers { get; }
 

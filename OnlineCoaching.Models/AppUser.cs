@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineCoaching.Models
 {
@@ -18,7 +19,7 @@ namespace OnlineCoaching.Models
             this.Offers = new HashSet<Offer>();
             this.IsCoach = false;
         }
-
+        
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -29,7 +30,7 @@ namespace OnlineCoaching.Models
 
         public bool IsCoach { get; set; }
 
-        public int Age { get; set; }
+        public int? Age { get; set; }
 
         public string AboutMe { get; set; }
 
@@ -39,9 +40,9 @@ namespace OnlineCoaching.Models
 
         public virtual ICollection<Offer> Offers { get; set; }
 
-        public int LevelID { get; set; }
+        public int? CoachingLevelID { get; set; }
 
-        public virtual Level Level { get; set; }
+        public virtual CoachingLevel CoachingLevel { get; set; }
 
         public double GetCoachRating()
         {
@@ -55,5 +56,7 @@ namespace OnlineCoaching.Models
 
             return sumRatings / countFeedbacks;
         }
+       
+
     }
 }

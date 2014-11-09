@@ -13,5 +13,11 @@ namespace OnlineCoaching.Controllers
         {
             return View();
         }
+
+        // GET: /Coaches/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
