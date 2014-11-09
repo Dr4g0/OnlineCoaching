@@ -9,6 +9,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoaching.Models", "On
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoaching.Data", "OnlineCoaching.Data\OnlineCoaching.Data.csproj", "{5DE1D3F4-A9EA-4650-850F-97547ED783F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{75F104F0-DDB3-437D-8360-79A91B8397D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{7A8AE4DF-4A1E-4EAC-B2C7-CD7A7BCA9144}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{BBA92224-46ED-496F-A175-BB395F6B67D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{278F2909-A442-4C18-98AD-EF33E6688F74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoaching.Infrastructure", "OnlineCoaching.Infrastructure\OnlineCoaching.Infrastructure.csproj", "{24F7387E-8BAA-49B6-8683-5B88DDE64B39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +37,18 @@ Global
 		{5DE1D3F4-A9EA-4650-850F-97547ED783F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DE1D3F4-A9EA-4650-850F-97547ED783F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DE1D3F4-A9EA-4650-850F-97547ED783F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F7387E-8BAA-49B6-8683-5B88DDE64B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F7387E-8BAA-49B6-8683-5B88DDE64B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F7387E-8BAA-49B6-8683-5B88DDE64B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F7387E-8BAA-49B6-8683-5B88DDE64B39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C4AC545-33DC-496D-BCD1-903AB355D614} = {7A8AE4DF-4A1E-4EAC-B2C7-CD7A7BCA9144}
+		{D6BCB317-DC07-40E1-B7FE-E83F3F56B928} = {75F104F0-DDB3-437D-8360-79A91B8397D9}
+		{5DE1D3F4-A9EA-4650-850F-97547ED783F4} = {75F104F0-DDB3-437D-8360-79A91B8397D9}
+		{24F7387E-8BAA-49B6-8683-5B88DDE64B39} = {7A8AE4DF-4A1E-4EAC-B2C7-CD7A7BCA9144}
 	EndGlobalSection
 EndGlobal

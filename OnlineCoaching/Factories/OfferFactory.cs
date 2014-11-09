@@ -1,12 +1,14 @@
 ﻿namespace OnlineCoaching.Factories
 {
+    using OnlineCoaching.Data;
     using OnlineCoaching.Models;
     using System;
     using System.Linq;
 
     public class OfferFactory : BaseFactory
     {
-        public OfferFactory():base(db)
+        public OfferFactory(IOnlineCoachingData db)
+            : base(db)
         {
         }
         public IQueryable<Offer> GetTopFiveOffers()

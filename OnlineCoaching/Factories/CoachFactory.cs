@@ -8,7 +8,7 @@
 
     public class CoachFactory : BaseFactory
     {
-        public CoachFactory()
+        public CoachFactory(IOnlineCoachingData db)
             : base(db)
         {
         }

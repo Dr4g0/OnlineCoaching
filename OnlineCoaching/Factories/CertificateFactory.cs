@@ -9,7 +9,8 @@ namespace OnlineCoaching.Factories
 {
     public class CertificateFactory : BaseFactory
     {
-        public CertificateFactory() : base(db)
+        public CertificateFactory(IOnlineCoachingData db)
+            : base(db)
         {
         }
 
