@@ -5,14 +5,14 @@
     using OnlineCoaching.Data;
     using AutoMapper.QueryableExtensions;
     using OnlineCoaching.ViewModels.Coaches;
-using OnlineCoaching.Models;
+    using OnlineCoaching.Models;
 
     public class CoachFactory : BaseFactory
     {
         public IQueryable<CoachProfileViewModel> GetAll()
         {
             return this.db.Users
-                .All().Where(u=>u.IsCoach)
+                .All().Where(u => u.IsCoach)
                 .Project().To<CoachProfileViewModel>();
         }
 
@@ -33,15 +33,6 @@ using OnlineCoaching.Models;
             //return allCoaches
             //    .OrderByDescending(c => c.CoachRating)
             //    .Take(first);
-        }
-
-        public double CalculateCoachRating(CoachProfileViewModel coach)
-        {
-            var feedbacks = coach.Offers.SelectMany(o => o.Feedbacks);
-            var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
-            var countFeedbacks = feedbacks.Count();
-
-            return sumRatings / countFeedbacks;
         }
     }
 }

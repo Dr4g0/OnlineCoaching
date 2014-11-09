@@ -20,7 +20,7 @@ namespace OnlineCoaching.Models
             this.IsCoach = false;
             this.CoachRating = this.CalculateCoachRating(this);
         }
-        
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -52,6 +52,11 @@ namespace OnlineCoaching.Models
             var feedbacks = coach.Offers.SelectMany(o => o.Feedbacks);
             var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
             var countFeedbacks = feedbacks.Count();
+
+            if (countFeedbacks == 0)
+            {
+                return 0;
+            }
 
             return sumRatings / countFeedbacks;
         }
