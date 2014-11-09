@@ -13,7 +13,7 @@ namespace OnlineCoaching.Controllers
         public ActionResult Index()
         {
             var coachesFactory = new CoachFactory();
-            var topFiveCoaches = coachesFactory.GetAll();
+            var topFiveCoaches = coachesFactory.GetTopCoaches(5);
             return View(topFiveCoaches);
         }
     }

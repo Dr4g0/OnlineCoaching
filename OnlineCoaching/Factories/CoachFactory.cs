@@ -18,9 +18,30 @@ using OnlineCoaching.Models;
 
         public IQueryable<CoachProfileViewModel> GetTopCoaches(int first)
         {
+
             return this.GetAll()
-                .OrderByDescending(u => u.GetCoachRating())
+                .OrderByDescending(c => c.CoachRating)
                 .Take(first);
+
+
+            //var allCoaches = this.GetAll();
+            //foreach (var coach in allCoaches)
+            //{
+            //    coach.CoachRating = this.CalculateCoachRating(coach);
+            //}
+
+            //return allCoaches
+            //    .OrderByDescending(c => c.CoachRating)
+            //    .Take(first);
+        }
+
+        public double CalculateCoachRating(CoachProfileViewModel coach)
+        {
+            var feedbacks = coach.Offers.SelectMany(o => o.Feedbacks);
+            var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
+            var countFeedbacks = feedbacks.Count();
+
+            return sumRatings / countFeedbacks;
         }
     }
 }

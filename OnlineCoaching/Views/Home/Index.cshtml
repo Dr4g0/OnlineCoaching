@@ -27,10 +27,12 @@
 <div class="row">
     <div class="col-md-4">
         <h2>Top five coaches</h2>
-        @foreach (var coach in Model)
-        {
-            @Html.Partial("~/Views/Coaches/_CoachProfileViewModel.cshtml", coach)
-        }
+        <ul class="list-group">
+            @foreach (var coach in Model)
+            {
+                @Html.Partial("~/Views/Coaches/_CoachProfileViewModel.cshtml", coach)
+            }
+        </ul>
     </div>
     <div class="col-md-4">
         <h2>Top five offers</h2>

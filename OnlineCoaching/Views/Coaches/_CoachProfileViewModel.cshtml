@@ -1,25 +1,33 @@
 ﻿@model OnlineCoaching.ViewModels.Coaches.CoachProfileViewModel
-
-<li class="list-group-item">
-    <div class="text-center">Username: <strong>@Model.Username</strong></div>
-    <img src="@Model.PictureURL" />
-    <div class="row">
-        <div class="col-md-6">
-            Age: @Model.Age
+<a href="#">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-6">
+                Username: <strong>@Model.Username</strong>
+            </div>
+            <div class="col-md-6">
+                Rating: @Model.CoachRating
+            </div>
         </div>
-        <div class="col-md-6">
-            Level: @Model.CoachingLevel
+        <img src="@Model.PictureURL" />
+        <div class="row">
+            <div class="col-md-6">
+                Age: @Model.Age
+            </div>
+            <div class="col-md-6">
+                Level: @Model.CoachingLevel
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <a href="#">Certificates: @Model.Certificates.Count()</a>
+        <div class="row">
+            <div class="col-md-6">
+                Certificates: @Model.Certificates.Count()
+            </div>
+            <div class="col-md-6">
+                Offers: @Model.Offers.Count()
+            </div>
         </div>
-        <div class="col-md-6">
-            <a href="#">Offers: @Model.Offers.Count()</a>
+        <div>
+            Skills: @Model.AboutMe
         </div>
-    </div>
-    <div>
-        Skills: @Model.AboutMe
-    </div>
-</li>
+    </li>
+</a>

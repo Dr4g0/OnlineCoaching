@@ -4,8 +4,10 @@
     using OnlineCoaching.Models;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Linq.Expressions;
+    using System.Web;
 
 
     public class CoachProfileViewModel : IMapFrom<AppUser>
@@ -43,17 +45,8 @@
 
         public virtual CoachingLevel CoachingLevel { get; set; }
 
-        public double GetCoachRating()
-        {
-            //if (!this.IsCoach)
-            //{
-            //    return 0;
-            //}
-            var feedbacks = this.Offers.SelectMany(o => o.Feedbacks);
-            var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
-            var countFeedbacks = feedbacks.Count();
+        public double CoachRating { get; set; }
 
-            return sumRatings / countFeedbacks;
-        }
+        
     }
 }

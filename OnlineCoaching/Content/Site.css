@@ -77,3 +77,16 @@ textarea {
 #coach-form:not(:checked) {
     display: none;
 }
+
+.list-group-item img{
+    width:100%;
+}
+
+.list-group-item:hover{
+    opacity:0.8;
+}
+
+.list-group a{
+    text-decoration:none;
+    color:black;
+}

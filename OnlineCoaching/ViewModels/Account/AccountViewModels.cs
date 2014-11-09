@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace OnlineCoaching.ViewModels.Account
 {
@@ -66,6 +67,8 @@ namespace OnlineCoaching.ViewModels.Account
 
     public class RegisterViewModel : IValidatableObject
     {
+     
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -97,12 +100,23 @@ namespace OnlineCoaching.ViewModels.Account
         [Display(Name = "Your Age")]
         public int? Age { get; set; }
 
-        [Display(Name = "Picture")]
         public string PictureURL { get; set; }
+
+        [DataType(DataType.Upload)]
+        [Display(Name = "Picture")]
+        public HttpPostedFileBase PictureUpload { get; set; }
 
         public virtual ICollection<Certificate> Certificates { get; set; }
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            var validImageTypes = new List<string>()
+            {
+                "image/gif",
+                "image/jpeg",
+                "image/pjpeg",
+                "image/png"
+            };
+
             if (this.IsCoach && this.AboutMe == null)
             {
                 yield return new ValidationResult("Skills are required for coaches.", new[] { "AboutMe" });
@@ -111,6 +125,18 @@ namespace OnlineCoaching.ViewModels.Account
             if (this.IsCoach && this.Age == null)
             {
                 yield return new ValidationResult("Age is required for coaches.", new[] { "Age" });
+            }
+
+            if (this.IsCoach)
+            {
+                if (this.PictureUpload == null || this.PictureUpload.ContentLength == 0)
+                {
+                    yield return new ValidationResult("The picture is required for coaches.", new[] { "PictureUpload" });
+                }
+                else if (!validImageTypes.Contains(this.PictureUpload.ContentType))
+                {
+                    yield return new ValidationResult("Please choose either a GIF, JPG or PNG file for picture.", new[] { "PictureUpload" });
+                }
             }
         }
     }

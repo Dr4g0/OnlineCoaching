@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineCoaching.Models;
 using OnlineCoaching.ViewModels.Account;
+using System.IO;
 
 namespace OnlineCoaching.Controllers
 {
@@ -153,6 +154,8 @@ namespace OnlineCoaching.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
+
             if (ModelState.IsValid)
             {
                 var user = new AppUser
@@ -166,6 +169,18 @@ namespace OnlineCoaching.Controllers
                 {
                     user.Age = model.Age;
                     user.AboutMe = model.AboutMe;
+                    if (model.PictureUpload != null && model.PictureUpload.ContentLength > 0)
+                    {
+                        var uploadDir = "~/uploads";
+                        if (!Directory.Exists(Server.MapPath(uploadDir)))
+                        {
+                            Directory.CreateDirectory(Server.MapPath(uploadDir));
+                        }
+                        var imagePath = Path.Combine(Server.MapPath(uploadDir), model.PictureUpload.FileName);
+                        var imageUrl = Path.Combine("uploads", model.PictureUpload.FileName);
+                        model.PictureUpload.SaveAs(imagePath);
+                        user.PictureURL = imageUrl;
+                    }
                 }
 
                 var result = await UserManager.CreateAsync(user, model.Password);
