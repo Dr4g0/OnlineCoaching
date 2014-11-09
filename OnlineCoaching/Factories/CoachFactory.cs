@@ -4,9 +4,14 @@
     using System.Linq;
     using OnlineCoaching.Models;
     using System.Collections.Generic;
+    using OnlineCoaching.Data;
 
     public class CoachFactory : BaseFactory
     {
+        public CoachFactory()
+            : base(db)
+        {
+        }
         public IQueryable<CoachProfileViewModel> GetTopCoaches(int first)
         {
             return this.db.Users

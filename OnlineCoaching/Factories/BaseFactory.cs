@@ -12,10 +12,5 @@
         {
             this.db = db;
         }
-
-        public BaseFactory()
-            : this(new OnlineCoachingData())
-        {
-        }
     }
 }

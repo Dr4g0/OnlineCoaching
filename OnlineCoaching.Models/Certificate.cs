@@ -14,5 +14,9 @@
 
         [Required]
         public string CertificateURL { get; set; }
+
+        public int CoachID { get; set; }
+
+        public virtual AppUser Coach { get; set; }
     }
 }

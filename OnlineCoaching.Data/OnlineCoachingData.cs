@@ -17,11 +17,6 @@
             this.context = context;
         }
 
-        public OnlineCoachingData()
-            : this(new OnlineCoachingDbContext())
-        {
-        }
-
         public IRepository<AppUser> Users
         {
             get

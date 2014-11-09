@@ -6,6 +6,9 @@
 
     public class OfferFactory : BaseFactory
     {
+        public OfferFactory():base(db)
+        {
+        }
         public IQueryable<Offer> GetTopFiveOffers()
         {
             return this.db.Offers
