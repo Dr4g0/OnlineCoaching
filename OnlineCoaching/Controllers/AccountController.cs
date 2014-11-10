@@ -17,6 +17,7 @@ namespace OnlineCoaching.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private const string UploadUserPicturesDir = "~/Uploads/UsersPictures";
         private ApplicationUserManager _userManager;
 
         public AccountController()
@@ -154,8 +155,6 @@ namespace OnlineCoaching.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-
-
             if (ModelState.IsValid)
             {
                 var user = new AppUser
@@ -171,13 +170,12 @@ namespace OnlineCoaching.Controllers
                     user.AboutMe = model.AboutMe;
                     if (model.PictureUpload != null && model.PictureUpload.ContentLength > 0)
                     {
-                        var uploadDir = "~/uploads";
-                        if (!Directory.Exists(Server.MapPath(uploadDir)))
+                        if (!Directory.Exists(Server.MapPath(UploadUserPicturesDir)))
                         {
-                            Directory.CreateDirectory(Server.MapPath(uploadDir));
+                            Directory.CreateDirectory(Server.MapPath(UploadUserPicturesDir));
                         }
-                        var imagePath = Path.Combine(Server.MapPath(uploadDir), model.PictureUpload.FileName);
-                        var imageUrl = Path.Combine("uploads", model.PictureUpload.FileName);
+                        var imagePath = Path.Combine(Server.MapPath(UploadUserPicturesDir), model.PictureUpload.FileName);
+                        var imageUrl = Path.Combine(UploadUserPicturesDir.Substring(2), model.PictureUpload.FileName);
                         model.PictureUpload.SaveAs(imagePath);
                         user.PictureURL = imageUrl;
                     }

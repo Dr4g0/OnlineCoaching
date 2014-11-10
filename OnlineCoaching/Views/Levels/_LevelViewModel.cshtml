@@ -1,0 +1,15 @@
+﻿@model OnlineCoaching.ViewModels.CoachingLevel.CoachingLevelViewModel
+
+<a href="~/Levels/Edit/@Model.ID">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-9">
+               <strong>@Model.Name</strong>
+            </div>
+            <div class="col-md-3" >
+                <img src="@Model.ImageURL" />
+            </div>
+        </div>
+    </li>
+</a>
+

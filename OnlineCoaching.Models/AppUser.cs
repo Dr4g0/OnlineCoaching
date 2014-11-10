@@ -18,7 +18,7 @@ namespace OnlineCoaching.Models
             this.Certificates = new HashSet<Certificate>();
             this.Offers = new HashSet<Offer>();
             this.IsCoach = false;
-            this.CoachRating = this.CalculateCoachRating(this);
+            this.CoachRating = 0;
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager)
@@ -47,18 +47,6 @@ namespace OnlineCoaching.Models
 
         public double CoachRating { get; set; }
 
-        public double CalculateCoachRating(AppUser coach)
-        {
-            var feedbacks = coach.Offers.SelectMany(o => o.Feedbacks);
-            var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
-            var countFeedbacks = feedbacks.Count();
-
-            if (countFeedbacks == 0)
-            {
-                return 0;
-            }
-
-            return sumRatings / countFeedbacks;
-        }
+       
     }
 }

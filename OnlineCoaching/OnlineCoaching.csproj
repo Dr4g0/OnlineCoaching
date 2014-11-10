@@ -178,21 +178,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CoachesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LevelsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Factories\CertificateFactory.cs" />
     <Compile Include="Factories\CoachFactory.cs" />
     <Compile Include="Factories\BaseFactory.cs" />
+    <Compile Include="Factories\LevelFactory.cs" />
     <Compile Include="Factories\OfferFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Account\AccountViewModels.cs" />
-    <Compile Include="ViewModels\Coaches\CoachProfileViewModel.cs" />
+    <Compile Include="ViewModels\Coach\CoachProfileViewModel.cs" />
     <Compile Include="ViewModels\Account\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CoachingLevel\CoachingLevelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -219,6 +223,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Uploads\UsersPictures\coach1.jpg" />
+    <Content Include="Uploads\UsersPictures\fitnessCoach1.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -255,10 +261,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Coaches\_CoachProfileViewModel.cshtml" />
     <Content Include="Views\Coaches\Index.cshtml" />
+    <Content Include="Views\Levels\Index.cshtml" />
+    <Content Include="Views\Levels\Create.cshtml" />
+    <Content Include="Views\Levels\_LevelViewModel.cshtml" />
+    <Content Include="Views\Levels\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\Certificates\" />
-    <Folder Include="ViewModels\Offers\" />
+    <Folder Include="ViewModels\Certificate\" />
+    <Folder Include="ViewModels\Offer\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>

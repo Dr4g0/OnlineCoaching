@@ -1,0 +1,26 @@
+﻿@model IEnumerable<OnlineCoaching.ViewModels.CoachingLevel.CoachingLevelViewModel>
+
+@{
+    ViewBag.Title = "Level Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>All levels</h4>
+
+@if (TempData["Success"] != null)
+{
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            @TempData["Success"].ToString()
+        </div>
+    </div>
+}
+
+<ul class="list-group ul-levels">
+    @foreach(var level in Model){
+        @Html.Partial("~/Views/Levels/_LevelViewModel.cshtml", level)
+    }
+</ul>
+
+

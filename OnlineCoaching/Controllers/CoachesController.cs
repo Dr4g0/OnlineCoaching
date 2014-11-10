@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace OnlineCoaching.Controllers
 {
-    public class CoachesController : Controller
+    public class CoachesController : BaseController
     {
         // GET: Coaches
         public ActionResult Index()

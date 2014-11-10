@@ -4,7 +4,7 @@
     using System.Linq;
     using OnlineCoaching.Data;
     using AutoMapper.QueryableExtensions;
-    using OnlineCoaching.ViewModels.Coaches;
+    using OnlineCoaching.ViewModels.Coach;
     using OnlineCoaching.Models;
 
     public class CoachFactory : BaseFactory
@@ -22,17 +22,6 @@
             return this.GetAll()
                 .OrderByDescending(c => c.CoachRating)
                 .Take(first);
-
-
-            //var allCoaches = this.GetAll();
-            //foreach (var coach in allCoaches)
-            //{
-            //    coach.CoachRating = this.CalculateCoachRating(coach);
-            //}
-
-            //return allCoaches
-            //    .OrderByDescending(c => c.CoachRating)
-            //    .Take(first);
         }
     }
 }

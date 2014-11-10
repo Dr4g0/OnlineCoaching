@@ -1,4 +1,4 @@
-﻿namespace OnlineCoaching.ViewModels.Coaches
+﻿namespace OnlineCoaching.ViewModels.Coach
 {
     using OnlineCoaching.Infrastructure.Mapping;
     using OnlineCoaching.Models;
@@ -6,31 +6,13 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
-    using System.Linq.Expressions;
-    using System.Web;
 
 
     public class CoachProfileViewModel : IMapFrom<AppUser>
     {
-        //public static Expression<Func<AppUser, CoachProfileViewModel>> FromCoach
-        //{
-        //    get
-        //    {
-        //        return c => new CoachProfileViewModel
-        //        {
-        //            ID = c.Id,
-        //            Age = c.Age,
-        //            AboutMe = c.AboutMe,
-        //            PictureURL = c.PictureURL,
-        //            Certificates = c.Certificates,
-        //            Offers=c.Offers,
-        //            CoachingLevel = c.CoachingLevel
-        //        };
-        //    }
-        //}
-
         public string ID { get; set; }
 
+        [Required]
         public string Username { get; set; }
 
         public int? Age { get; set; }
@@ -47,6 +29,18 @@
 
         public double CoachRating { get; set; }
 
-        
+        public double CalculateCoachRating(AppUser coach)
+        {
+            var feedbacks = coach.Offers.SelectMany(o => o.Feedbacks);
+            var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
+            var countFeedbacks = feedbacks.Count();
+
+            if (countFeedbacks == 0)
+            {
+                return 0;
+            }
+
+            return sumRatings / countFeedbacks;
+        }
     }
 }

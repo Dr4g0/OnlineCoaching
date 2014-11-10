@@ -17,9 +17,11 @@
         public int ID { get; set; }
 
         [Required]
-        public string Value { get; set; }
+        public double Rank { get; set; }
 
         [Required]
+        public string Name { get; set; }
+
         public string ImageURL { get; set; }
 
         public virtual ICollection<AppUser> Coaches { get; set; }
