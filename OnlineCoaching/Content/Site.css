@@ -100,3 +100,15 @@ textarea {
     width:25px !important;
 }
 
+#levels-index-grid, #ratings-index-grid{
+    width:500px;
+}
+
+#levels-index-grid table tbody tr td:nth-last-child(-n+3){
+    text-align:center;
+}
+
+span.k-link{
+    text-align:center;
+}
+

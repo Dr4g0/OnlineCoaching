@@ -49,5 +49,53 @@ namespace OnlineCoaching.Controllers
 
             return View(rating);
         }
+
+        //GET: Edit rating
+        public ActionResult Edit(int id)
+        {
+            var existingRating = this.factory.GetByID(id);
+            var ratingModel = AutoMapper.Mapper.Map<RatingViewModel>(existingRating);
+            return View(ratingModel);
+        }
+
+        //POST: Edit rating
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(RatingViewModel rating)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingRating = this.factory.GetByID(rating.ID);
+
+                existingRating.Name = rating.Name;
+                existingRating.Value = rating.Value;
+
+                this.factory.Update(existingRating);
+                TempData["Success"] = "A rating '" + rating.Name + "' was edited";
+                return RedirectToAction("Index");
+            }
+
+            return View(rating);
+        }
+
+        //GET: Delete level
+        public ActionResult Delete(int id)
+        {
+            var existingRating = this.factory.GetByID(id);
+            var ratingModel = AutoMapper.Mapper.Map<RatingViewModel>(existingRating);
+            return View(ratingModel);
+        }
+
+        //POST: Delete level
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(RatingViewModel level)
+        {
+            var existingRating = this.factory.GetByID(level.ID);
+            var ratingModel = AutoMapper.Mapper.Map<RatingViewModel>(existingRating);
+            this.factory.Delete(existingRating);
+            TempData["Success"] = "A rating '" + ratingModel.Name + "' was deleted";
+            return RedirectToAction("Index");
+        }
     }
 }

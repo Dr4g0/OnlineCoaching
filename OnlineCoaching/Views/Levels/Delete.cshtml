@@ -11,9 +11,7 @@
     @Html.AntiForgeryToken()
     <h4>Delete level</h4>
     <hr />
-    <br />
     <h4 class="panel panel-body panel-danger">Are you sure you want to delete this level ?</h4>
-    @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(l => l.Name, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">

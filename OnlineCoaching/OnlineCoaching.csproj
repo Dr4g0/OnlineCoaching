@@ -985,12 +985,10 @@
     <Content Include="Views\Coaches\Index.cshtml" />
     <Content Include="Views\Levels\Index.cshtml" />
     <Content Include="Views\Levels\Create.cshtml" />
-    <Content Include="Views\Levels\_LevelViewModel.cshtml" />
     <Content Include="Views\Levels\Edit.cshtml" />
     <Content Include="Views\Levels\Delete.cshtml" />
     <Content Include="Views\Ratings\Create.cshtml" />
     <Content Include="Views\Ratings\Index.cshtml" />
-    <Content Include="Views\Ratings\_RatingViewModel.cshtml" />
     <Content Include="Scripts\kendo\kendo.angular.min.js.map" />
     <Content Include="Scripts\kendo\kendo.autocomplete.min.js.map" />
     <Content Include="Scripts\kendo\kendo.binder.min.js.map" />
@@ -1099,6 +1097,8 @@
     <Content Include="Scripts\kendo\kendo.view.min.js.map" />
     <Content Include="Scripts\kendo\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\kendo.window.min.js.map" />
+    <Content Include="Views\Ratings\Edit.cshtml" />
+    <Content Include="Views\Ratings\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />

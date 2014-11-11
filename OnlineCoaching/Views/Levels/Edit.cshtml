@@ -14,9 +14,9 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(l => l.Name, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(l => l.Name, new { @class = "col-md-2 control-label"  })
         <div class="col-md-10">
-            @Html.TextBoxFor(l => l.Name, new { @class = "form-control" })
+            @Html.TextBoxFor(l => l.Name, new { @class = "form-control", @autofocus = true })
         </div>
     </div>
     <div class="form-group">
