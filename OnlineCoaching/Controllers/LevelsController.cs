@@ -1,6 +1,5 @@
 ﻿namespace OnlineCoaching.Controllers
 {
-    using Microsoft.AspNet.Identity;
     using OnlineCoaching.Factories;
     using OnlineCoaching.Models;
     using OnlineCoaching.ViewModels.CoachingLevel;
@@ -8,10 +7,10 @@
     using System.IO;
     using System.Linq;
     using System.Web.Mvc;
-    using AutoMapper;
 
     public class LevelsController : BaseController
     {
+        private string currentPort = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
         private const string UploadLevelImagesDir = "~/Uploads/LevelImages";
         private LevelFactory factory;
         public LevelsController()
@@ -31,7 +30,6 @@
         {
             return View();
         }
-
 
         //POST: CreateLevel
         [HttpPost]
@@ -53,7 +51,7 @@
                         Directory.CreateDirectory(Server.MapPath(UploadLevelImagesDir));
                     }
                     var imagePath = Path.Combine(Server.MapPath(UploadLevelImagesDir), level.ImageUpload.FileName);
-                    var imageUrl = Path.Combine(UploadLevelImagesDir.Substring(2), level.ImageUpload.FileName);
+                    var imageUrl = Path.Combine(this.currentPort, UploadLevelImagesDir.Substring(2), level.ImageUpload.FileName);
                     level.ImageUpload.SaveAs(imagePath);
                     newLevel.ImageURL = imageUrl;
                 }
@@ -74,6 +72,7 @@
             return View(levelModel);
         }
 
+        //POST: Edit level
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CoachingLevelViewModel level)
@@ -103,6 +102,26 @@
             }
 
             return View(level);
+        }
+
+        //GET: Delete level
+        public ActionResult Delete(int id)
+        {
+            var existingLevel = this.factory.GetByID(id);
+            var levelModel = AutoMapper.Mapper.Map<CoachingLevelViewModel>(existingLevel);
+            return View(levelModel);
+        }
+
+        //POST: Delete level
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(CoachingLevelViewModel level)
+        {
+            var existingLevel = this.factory.GetByID(level.ID);
+            var levelModel = AutoMapper.Mapper.Map<CoachingLevelViewModel>(existingLevel);
+            this.factory.Delete(existingLevel);
+            TempData["Success"] = "A level '" + levelModel.Name + "' was deleted";
+            return RedirectToAction("Index");
         }
     }
 }

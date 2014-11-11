@@ -30,5 +30,11 @@
         public IDbSet<Certificate> Certificates { get; set; }
 
         public IDbSet<Feedback> Feedbacks { get; set; }
+
+        public IDbSet<CoachingLevel> Levels { get; set; }
+
+        public IDbSet<Rating> Ratings { get; set; }
+
+        public IDbSet<Comment> Comments { get; set; }
     }
 }

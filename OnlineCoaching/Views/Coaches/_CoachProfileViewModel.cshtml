@@ -15,7 +15,14 @@
                 Age: @Model.Age
             </div>
             <div class="col-md-6">
-                Level: @Model.CoachingLevel
+                <div class="row">
+                    <div class="col-md-4">
+                        Level:
+                    </div>
+                    <div class="col-md-8 pull-left">
+                        <img src="@Model.CoachingLevel.ImageURL" title="@Model.CoachingLevel.Name" class="level-images-home"/>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

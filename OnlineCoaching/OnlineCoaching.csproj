@@ -265,6 +265,7 @@
     <Content Include="Views\Levels\Create.cshtml" />
     <Content Include="Views\Levels\_LevelViewModel.cshtml" />
     <Content Include="Views\Levels\Edit.cshtml" />
+    <Content Include="Views\Levels\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\Certificate\" />

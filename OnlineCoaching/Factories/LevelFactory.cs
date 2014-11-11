@@ -1,14 +1,11 @@
-﻿using OnlineCoaching.ViewModels.CoachingLevel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper.QueryableExtensions;
-using AutoMapper.Mappers;
-using OnlineCoaching.Models;
-
-namespace OnlineCoaching.Factories
+﻿namespace OnlineCoaching.Factories
 {
+    using OnlineCoaching.ViewModels.CoachingLevel;
+    using System;
+    using System.Linq;
+    using AutoMapper.QueryableExtensions;
+    using OnlineCoaching.Models;
+
     public class LevelFactory : BaseFactory
     {
         public IQueryable<CoachingLevelViewModel> GetAll()
@@ -35,6 +32,18 @@ namespace OnlineCoaching.Factories
             this.db.SaveChanges();
         }
 
+        public void Delete(CoachingLevel level)
+        {
+            this.db.Levels.Delete(level);
+            this.db.SaveChanges();
+        }
 
+        public CoachingLevel GetLowestLevel()
+        {
+            return this.db.Levels
+                .All()
+                .OrderBy(l => l.Rank)
+                .FirstOrDefault();
+        }
     }
 }

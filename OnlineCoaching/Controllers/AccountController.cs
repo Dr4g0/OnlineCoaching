@@ -11,17 +11,21 @@ using Microsoft.Owin.Security;
 using OnlineCoaching.Models;
 using OnlineCoaching.ViewModels.Account;
 using System.IO;
+using OnlineCoaching.Factories;
 
 namespace OnlineCoaching.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private string currentPort = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
         private const string UploadUserPicturesDir = "~/Uploads/UsersPictures";
         private ApplicationUserManager _userManager;
+        private LevelFactory levelFactory;
 
         public AccountController()
         {
+            this.levelFactory = new LevelFactory();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -166,6 +170,8 @@ namespace OnlineCoaching.Controllers
 
                 if (user.IsCoach)
                 {
+                    model.CoachingLevelID = this.levelFactory.GetLowestLevel().ID;
+                    user.CoachingLevelID=model.CoachingLevelID;
                     user.Age = model.Age;
                     user.AboutMe = model.AboutMe;
                     if (model.PictureUpload != null && model.PictureUpload.ContentLength > 0)
@@ -175,7 +181,7 @@ namespace OnlineCoaching.Controllers
                             Directory.CreateDirectory(Server.MapPath(UploadUserPicturesDir));
                         }
                         var imagePath = Path.Combine(Server.MapPath(UploadUserPicturesDir), model.PictureUpload.FileName);
-                        var imageUrl = Path.Combine(UploadUserPicturesDir.Substring(2), model.PictureUpload.FileName);
+                        var imageUrl = Path.Combine(this.currentPort, UploadUserPicturesDir.Substring(2), model.PictureUpload.FileName);
                         model.PictureUpload.SaveAs(imagePath);
                         user.PictureURL = imageUrl;
                     }

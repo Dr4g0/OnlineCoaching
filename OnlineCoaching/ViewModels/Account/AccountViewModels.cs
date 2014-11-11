@@ -102,6 +102,8 @@ namespace OnlineCoaching.ViewModels.Account
 
         public string PictureURL { get; set; }
 
+        public int? CoachingLevelID { get; set; }
+
         [DataType(DataType.Upload)]
         [Display(Name = "Picture")]
         public HttpPostedFileBase PictureUpload { get; set; }
