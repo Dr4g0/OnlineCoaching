@@ -124,5 +124,31 @@
             TempData["Success"] = "A level '" + levelModel.Name + "' was deleted";
             return RedirectToAction("Index");
         }
+
+        public ActionResult IsNameAvailble(string name)
+        {
+            try
+            {
+                var level = this.factory.GetAll().Single(c => c.Name == name);
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult IsRankAvailble(int rank)
+        {
+            try
+            {
+                var level = this.factory.GetAll().Single(c => c.Rank == rank);
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

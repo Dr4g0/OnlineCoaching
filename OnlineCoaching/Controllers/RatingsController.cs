@@ -96,5 +96,31 @@ namespace OnlineCoaching.Controllers
             TempData["Success"] = "A rating '" + existingRating.Name + "' was deleted";
             return RedirectToAction("Index");
         }
+
+        public ActionResult IsNameAvailble(string name)
+        {
+            try
+            {
+                var rating = this.factory.GetAll().Single(c => c.Name == name);
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult IsValueAvailble(int value)
+        {
+            try
+            {
+                var rating = this.factory.GetAll().Single(c => c.Value == value);
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

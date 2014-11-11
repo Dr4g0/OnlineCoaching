@@ -17,9 +17,9 @@
     </div>
 }
 
-<div id="ratings-index-grid">
+<div class="index-grid">
     @(Html.Kendo().Grid(Model)
-        .Name("levelGrid")
+        .Name("ratingGrid")
         .Columns(columns =>
         {
             columns.Bound(l => l.ID).Width(50);

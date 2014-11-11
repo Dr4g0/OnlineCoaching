@@ -6,15 +6,18 @@
     using System;
     using System.Web;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public class CoachingLevelViewModel : IMapFrom<CoachingLevel>, IValidatableObject
     {
         public int ID { get; set; }
 
         [Required]
+        [Remote("IsNameAvailble", "Levels", ErrorMessage = "Name Already Exist")]
         public string Name { get; set; }
 
         [Required]
+        [Remote("IsRankAvailble", "Levels", ErrorMessage = "Rank Already Exist")]
         public double Rank { get; set; }
 
         [Display(Name="Current Image")]
