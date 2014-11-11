@@ -78,7 +78,7 @@ namespace OnlineCoaching.Controllers
             return View(rating);
         }
 
-        //GET: Delete level
+        //GET: Delete rating
         public ActionResult Delete(int id)
         {
             var existingRating = this.factory.GetByID(id);
@@ -86,15 +86,14 @@ namespace OnlineCoaching.Controllers
             return View(ratingModel);
         }
 
-        //POST: Delete level
+        //POST: Delete rating
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(RatingViewModel level)
+        public ActionResult Delete(RatingViewModel rating)
         {
-            var existingRating = this.factory.GetByID(level.ID);
-            var ratingModel = AutoMapper.Mapper.Map<RatingViewModel>(existingRating);
+            var existingRating = this.factory.GetByID(rating.ID);
             this.factory.Delete(existingRating);
-            TempData["Success"] = "A rating '" + ratingModel.Name + "' was deleted";
+            TempData["Success"] = "A rating '" + existingRating.Name + "' was deleted";
             return RedirectToAction("Index");
         }
     }
