@@ -1,0 +1,25 @@
+﻿@model IEnumerable<OnlineCoaching.ViewModels.Rating.RatingViewModel>
+
+@{
+    ViewBag.Title = "Rating Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>All ratings</h4>
+
+@if (TempData["Success"] != null)
+{
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            @TempData["Success"].ToString()
+        </div>
+    </div>
+}
+
+<ul class="list-group ul-levels-ratings">
+    @foreach (var rating in Model)
+    {
+        @Html.Partial("~/Views/Ratings/_RatingViewModel.cshtml", rating)
+    }
+</ul>

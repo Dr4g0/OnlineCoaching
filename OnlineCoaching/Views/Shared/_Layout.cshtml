@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Online Coaching</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
-
+    @RenderSection("styles", required: false)
+    @Styles.Render("~/Content/common")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,8 +22,7 @@
                 @Html.ActionLink("Online Coaching", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -34,7 +35,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

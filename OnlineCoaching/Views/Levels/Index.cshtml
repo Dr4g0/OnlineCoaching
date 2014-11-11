@@ -17,8 +17,9 @@
     </div>
 }
 
-<ul class="list-group ul-levels">
-    @foreach(var level in Model){
+<ul class="list-group ul-levels-ratings">
+    @foreach (var level in Model)
+    {
         @Html.Partial("~/Views/Levels/_LevelViewModel.cshtml", level)
     }
 </ul>
