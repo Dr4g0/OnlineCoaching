@@ -9,7 +9,7 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    public class LevelsController : BaseController
+    public class LevelsController : Controller
     {
         private string currentPort = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
         private const string UploadLevelImagesDir = "~/Uploads/LevelImages";

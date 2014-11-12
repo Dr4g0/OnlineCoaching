@@ -8,6 +8,7 @@
 
     public class LevelFactory : BaseFactory
     {
+    
         public IQueryable<CoachingLevelViewModel> GetAll()
         {
             return this.db.Levels

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace OnlineCoaching.ViewModels.CoachingCategory
@@ -17,7 +16,7 @@ namespace OnlineCoaching.ViewModels.CoachingCategory
         [Remote("IsNameAvailble", "Categories", ErrorMessage = "Name Already Exist")]
         public string Name { get; set; }
 
-        public virtual ICollection<Offer> Offers { get; set; }
+        public virtual ICollection<OnlineCoaching.Models.Offer> Offers { get; set; }
 
     }
 }

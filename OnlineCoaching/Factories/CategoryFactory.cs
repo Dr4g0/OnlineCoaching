@@ -1,5 +1,6 @@
 ﻿namespace OnlineCoaching.Factories
 {
+    using OnlineCoaching.Data;
     using OnlineCoaching.ViewModels.CoachingCategory;
     using System;
     using System.Linq;
@@ -8,6 +9,7 @@
 
     public class CategoryFactory : BaseFactory
     {
+
         public IQueryable<CategoryViewModel> GetAll()
         {
             return this.db.Categories

@@ -9,11 +9,6 @@ namespace OnlineCoaching.Factories
 {
     public class CertificateFactory : BaseFactory
     {
-        public CertificateFactory(IOnlineCoachingData db)
-            : base(db)
-        {
-        }
-
         public IQueryable<Certificate> GetCertificateByCoachId(int coachID)
         {
             return this.db.Certificates
