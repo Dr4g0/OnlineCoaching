@@ -16,7 +16,7 @@ using OnlineCoaching.Factories;
 namespace OnlineCoaching.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private string currentPort = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
         private const string UploadUserPicturesDir = "~/Uploads/UsersPictures";
@@ -25,7 +25,7 @@ namespace OnlineCoaching.Controllers
 
         public AccountController()
         {
-            this.levelFactory = new LevelFactory();
+            this.levelFactory = new BaseFactory().LevelFactory;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)

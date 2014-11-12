@@ -7,13 +7,20 @@
     using AutoMapper.QueryableExtensions;
     using OnlineCoaching.Models;
 
-    public class CategoryFactory : BaseFactory
+    public class CategoryFactory 
     {
+
+        private IOnlineCoachingData db;
+
+        public CategoryFactory(IOnlineCoachingData db)
+        {
+            this.db = db;
+        }
 
         public IQueryable<CategoryViewModel> GetAll()
         {
             return this.db.Categories
-                .All().OrderBy(c => c.Name)
+                .All().OrderBy(c => c.ID)
                 .Project().To<CategoryViewModel>();
         }
 

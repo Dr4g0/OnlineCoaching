@@ -7,8 +7,15 @@
     using OnlineCoaching.ViewModels.Coach;
     using OnlineCoaching.Models;
 
-    public class CoachFactory : BaseFactory
+    public class CoachFactory
     {
+        private IOnlineCoachingData db;
+
+        public CoachFactory(IOnlineCoachingData db)
+        {
+            this.db = db;
+        }
+
         public IQueryable<CoachProfileViewModel> GetAll()
         {
             return this.db.Users
@@ -22,6 +29,12 @@
             return this.GetAll()
                 .OrderByDescending(c => c.CoachRating)
                 .Take(first);
+        }
+
+        public AppUser GetById(string id)
+        {
+            return this.db.Users.All()
+                .FirstOrDefault(u => u.Id == id);
         }
     }
 }

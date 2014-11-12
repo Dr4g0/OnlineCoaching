@@ -11,7 +11,7 @@ using OnlineCoaching.Models;
 namespace OnlineCoaching.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         public ManageController()
         {

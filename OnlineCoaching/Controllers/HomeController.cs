@@ -8,11 +8,11 @@ using System.Web.Mvc;
 
 namespace OnlineCoaching.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            var coachesFactory = new CoachFactory();
+            var coachesFactory = new BaseFactory().CoachFactory;
             var topFiveCoaches = coachesFactory.GetTopCoaches(5);
             return View(topFiveCoaches);
         }

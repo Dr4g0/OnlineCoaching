@@ -9,14 +9,14 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    public class LevelsController : Controller
+    public class LevelsController : BaseController
     {
         private string currentPort = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
         private const string UploadLevelImagesDir = "~/Uploads/LevelImages";
         private LevelFactory factory;
         public LevelsController()
         {
-            this.factory = new LevelFactory();
+            this.factory = new BaseFactory().LevelFactory;
         }
 
         // GET: Levels

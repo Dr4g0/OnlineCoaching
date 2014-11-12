@@ -7,8 +7,15 @@
     using System.Linq;
     using AutoMapper.QueryableExtensions;
 
-    public class OfferFactory : BaseFactory
+    public class OfferFactory
     {
+         private IOnlineCoachingData db;
+
+        public OfferFactory(IOnlineCoachingData db)
+        {
+            this.db = db;
+        }
+
         public IQueryable<Offer> GetTopFiveOffers()
         {
             return this.db.Offers

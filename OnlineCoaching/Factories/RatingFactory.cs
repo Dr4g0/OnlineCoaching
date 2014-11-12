@@ -5,11 +5,19 @@ using System.Linq;
 using System.Web;
 using AutoMapper.QueryableExtensions;
 using OnlineCoaching.Models;
+using OnlineCoaching.Data;
 
 namespace OnlineCoaching.Factories
 {
-    public class RatingFactory : BaseFactory
+    public class RatingFactory
     {
+        private IOnlineCoachingData db;
+
+        public RatingFactory(IOnlineCoachingData db)
+        {
+            this.db = db;
+        }
+
         public IQueryable<RatingViewModel> GetAll()
         {
             return this.db.Ratings

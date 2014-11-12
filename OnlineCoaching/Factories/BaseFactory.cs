@@ -6,16 +6,22 @@
 
     public class BaseFactory
     {
-        protected IOnlineCoachingData db;
+        protected static IOnlineCoachingData db = new OnlineCoachingData(new OnlineCoachingDbContext());
 
-        public BaseFactory(IOnlineCoachingData db)
-        {
-            this.db = db;
-        }
+        public CategoryFactory CategoryFactory { get { return new CategoryFactory(db); } }
 
-        public BaseFactory()
-            : this(new OnlineCoachingData(new OnlineCoachingDbContext()))
-        {
-        }
+        public CertificateFactory CertificateFactory { get { return new CertificateFactory(db); } }
+
+        public CoachFactory CoachFactory { get { return new CoachFactory(db); } }
+
+        public CommentFactory CommentFactory { get { return new CommentFactory(db); } }
+
+        public LevelFactory LevelFactory { get { return new LevelFactory(db); } }
+
+        public OfferFactory OfferFactory { get { return new OfferFactory(db); } }
+
+        public RatingFactory RatingFactory { get { return new RatingFactory(db); } }
+
+
     }
 }

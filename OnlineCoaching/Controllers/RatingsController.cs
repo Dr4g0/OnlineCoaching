@@ -7,13 +7,13 @@ using System.Web.Mvc;
 
 namespace OnlineCoaching.Controllers
 {
-    public class RatingsController : Controller
+    public class RatingsController : BaseController
     {
         private RatingFactory factory;
 
         public RatingsController()
         {
-            this.factory = new RatingFactory();
+            this.factory = new BaseFactory().RatingFactory;
         }
 
         // GET: Ratings

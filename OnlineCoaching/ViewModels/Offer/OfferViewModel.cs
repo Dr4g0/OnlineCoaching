@@ -1,5 +1,7 @@
 ﻿using OnlineCoaching.Infrastructure.Mapping;
 using OnlineCoaching.Models;
+using OnlineCoaching.ViewModels.Coach;
+using OnlineCoaching.ViewModels.CoachingCategory;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,12 +23,12 @@ namespace OnlineCoaching.ViewModels.Offer
         public int CoachID { get; set; }
 
         [Required]
-        public virtual AppUser Coach { get; set; }
+        public virtual CoachProfileViewModel Coach { get; set; }
 
         public int CoachingCategoryID { get; set; }
 
         [Required]
-        public virtual CoachCategory CoachingCategory { get; set; }
+        public virtual CategoryViewModel CoachingCategory { get; set; }
 
         public bool IsNewCategory { get; set; }
 
@@ -41,5 +43,7 @@ namespace OnlineCoaching.ViewModels.Offer
         public HttpPostedFileBase ImageUpload { get; set; }
 
         public DateTime DateCreated { get; set; }
+
+        public IQueryable<CategorySimpleViewModel> Categories { get; set; }
     }
 }

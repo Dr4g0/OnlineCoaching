@@ -9,13 +9,13 @@ using System.Web.Mvc;
 
 namespace OnlineCoaching.Controllers
 {
-    public class CommentsController : Controller
+    public class CommentsController : BaseController
     {
          private CommentFactory factory;
 
          public CommentsController()
         {
-            this.factory = new CommentFactory();
+            this.factory = new BaseFactory().CommentFactory;
         }
 
          // GET: Comments

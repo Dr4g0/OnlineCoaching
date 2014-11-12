@@ -5,10 +5,18 @@
     using System.Linq;
     using AutoMapper.QueryableExtensions;
     using OnlineCoaching.Models;
+using OnlineCoaching.Data;
 
-    public class LevelFactory : BaseFactory
+    public class LevelFactory
     {
     
+         private IOnlineCoachingData db;
+
+        public LevelFactory(IOnlineCoachingData db)
+        {
+            this.db = db;
+        }
+
         public IQueryable<CoachingLevelViewModel> GetAll()
         {
             return this.db.Levels

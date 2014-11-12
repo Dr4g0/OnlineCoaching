@@ -5,11 +5,20 @@ using System.Linq;
 using System.Web;
 using AutoMapper.QueryableExtensions;
 using OnlineCoaching.Models;
+using OnlineCoaching.Data;
 
 namespace OnlineCoaching.Factories
 {
-    public class CommentFactory : BaseFactory
+    public class CommentFactory
     {
+
+        private IOnlineCoachingData db;
+
+        public CommentFactory(IOnlineCoachingData db)
+        {
+            this.db = db;
+        }
+
         public IQueryable<CommentViewModel> GetAll()
         {
             return this.db.Comments
