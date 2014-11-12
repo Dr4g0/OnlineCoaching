@@ -1,5 +1,5 @@
 ﻿@model OnlineCoaching.ViewModels.Coach.CoachProfileViewModel
-<a href="#">
+<a href="~/Coaches/View/@Model.ID">
     <li class="list-group-item">
         <div class="row">
             <div class="col-md-9">
@@ -9,7 +9,7 @@
                 Rating: @Model.CoachRating
             </div>
         </div>
-        <img src="@Model.PictureURL" />
+        <img src="@Model.PictureURL" class="coach-picture"/>
         <div class="row">
             <div class="col-md-6">
                 Age: @Model.Age

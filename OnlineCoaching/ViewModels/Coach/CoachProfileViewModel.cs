@@ -2,6 +2,7 @@
 {
     using OnlineCoaching.Infrastructure.Mapping;
     using OnlineCoaching.Models;
+    using OnlineCoaching.ViewModels.CoachingLevel;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -29,18 +30,18 @@
 
         public double CoachRating { get; set; }
 
-        public double CalculateCoachRating(AppUser coach)
-        {
-            var feedbacks = coach.Offers.SelectMany(o => o.Feedbacks);
-            var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
-            var countFeedbacks = feedbacks.Count();
+        //public double CalculateCoachRating(AppUser coach)
+        //{
+        //    var feedbacks = coach.Offers.SelectMany(o => o.Feedbacks);
+        //    var sumRatings = feedbacks.Sum(f => Convert.ToDouble(f.Rating));
+        //    var countFeedbacks = feedbacks.Count();
 
-            if (countFeedbacks == 0)
-            {
-                return 0;
-            }
+        //    if (countFeedbacks == 0)
+        //    {
+        //        return 0;
+        //    }
 
-            return sumRatings / countFeedbacks;
-        }
+        //    return sumRatings / countFeedbacks;
+        //}
     }
 }

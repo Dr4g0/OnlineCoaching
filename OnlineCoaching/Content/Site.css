@@ -78,8 +78,9 @@ textarea {
     display: none;
 }
 
-.list-group-item img {
-    width: 70%;
+.coach-picture {
+    width: 150px;
+    height:150px !important;
 }
 
 .list-group-item:hover {
@@ -138,4 +139,37 @@ span.k-link {
 
 #category-index-grid{
     width:420px;
+}
+
+.coaches-list-index-page{
+    width:250px;
+    height:300px !important;
+    overflow:auto;
+    /*float:left;*/
+}
+
+.coaches-list-index-page::after{
+    clear:both;
+}
+
+.coach-view-level-image{
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+    min-height:40px;
+    width:35px;
+}
+
+.coach-level-container{
+    position:relative;
+}
+
+.helper{
+    min-height:40px
+}
+
+.coach-view-picture{
+    width:250px;
+    text-align:right;
 }

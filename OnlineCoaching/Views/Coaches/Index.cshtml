@@ -1,3 +1,26 @@
-﻿
+﻿@model IEnumerable<OnlineCoaching.ViewModels.Coach.CoachProfileViewModel>
+
+<h2>All Coaches</h2>
+
+<table class="table table-responsive">
+    <tr>
+        @foreach (var coach in Model)
+        {
+            <td class="coaches-list-index-page">
+                @Html.Partial("_CoachProfileViewModel", coach)
+            </td>
+        }
+    </tr>
+</table>
+
+@*@(Html.Kendo().ListView<OnlineCoaching.ViewModels.Coach.CoachProfileViewModel>()
+        .Name("listView")
+        .TagName("div")
+        .ClientTemplateId("template")
+        .DataSource(dataSource =>
+        {
+            dataSource.Read(read => read.Action("Index","Coaches"));
+            dataSource.PageSize(15);
+        }))*@
 
 

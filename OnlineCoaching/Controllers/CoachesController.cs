@@ -1,4 +1,5 @@
 ﻿using OnlineCoaching.Factories;
+using OnlineCoaching.ViewModels.Coach;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,12 @@ namespace OnlineCoaching.Controllers
         {
             var allCoaches = this.factory.GetAll();
             return View(allCoaches);
+        }
+
+        public ActionResult View(string id)
+        {
+            var coach = AutoMapper.Mapper.Map<CoachProfileViewModel>(this.factory.GetById(id));
+            return View(coach);
         }
     }
 }

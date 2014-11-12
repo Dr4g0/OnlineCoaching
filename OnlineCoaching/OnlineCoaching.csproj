@@ -1129,6 +1129,7 @@
     <Content Include="Views\Comments\Delete.cshtml" />
     <Content Include="Views\Offers\Create.cshtml" />
     <Content Include="Views\Offers\Index.cshtml" />
+    <Content Include="Views\Coaches\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
