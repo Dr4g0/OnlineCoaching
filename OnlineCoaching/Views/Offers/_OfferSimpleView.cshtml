@@ -1,0 +1,27 @@
+﻿@model OnlineCoaching.ViewModels.Offer.OfferViewModel
+<a href="~/Offers/View/@Model.ID">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-9">
+                Title: <strong>@Model.Title</strong>
+            </div>
+            <div class="col-md-3">
+                Rating: @Model.Rating
+            </div>
+        </div>
+        <img src="@Model.OfferPictureURL" alt="No picture" class="offer-picture"/>
+        <div class="row">
+            <div class="col-md-6">
+                Coach: @Model.Coach.Username
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    Joiners: @Model.Joiners.Count()
+                </div>
+            </div>
+        </div>
+        <div>
+            Created on: @Model.DateCreated
+        </div>
+    </li>
+</a>

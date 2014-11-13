@@ -46,7 +46,5 @@ namespace OnlineCoaching.Models
         public virtual CoachingLevel CoachingLevel { get; set; }
 
         public double CoachRating { get; set; }
-
-       
     }
 }

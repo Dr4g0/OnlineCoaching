@@ -11,7 +11,10 @@
         </h2>
         <div class="row coach-level-container">
             <h3 class="col-md-2 helper">Level: </h3>
-            <img src="@Model.CoachingLevel.ImageURL" class="coach-view-level-image pull-left" title="@Model.CoachingLevel.Name" />
+            <div>
+                <span></span>
+                <img src="@Model.CoachingLevel.ImageURL" class="img-responsive coach-view-level-image pull-left col-md-2" title="@Model.CoachingLevel.Name" />
+            </div>
         </div>
         <div class="row">
             <h3 class="col-md-4">Age: @Model.Age</h3>

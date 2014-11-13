@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OnlineCoaching.ViewModels.Coach.CoachProfileViewModel>
+﻿@model OnlineCoaching.ViewModels.CompositeModels.CoachesOffersViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -12,15 +12,15 @@
             <p class="left-intro-content">Find your coach and conquer all peaks in your life.</p>
         </div>
     </div>
-    <div class="col-md-4">
+    <a href="~/Coaches" class="col-md-4 home-right-anchor">
         <div class="jumbotron home-intro-right">
-            <div class="home-intro-right-text">
-                <h2>Become a coach!</h2>
-                <p class="lead">Share your skills, teach others!</p>
+            <div class="home-intro-right-top">
             </div>
-            <div class="home-intro-right-image"></div>
+            <h1>
+                Find You Coach Here
+            </h1>
         </div>
-    </div>
+    </a>
 </div>
 
 
@@ -28,24 +28,32 @@
     <div class="col-md-4 home-list">
         <h2>Top coaches</h2>
         <ul class="list-group">
-            @foreach (var coach in Model)
+            @foreach (var coach in Model.Coaches)
             {
-                @Html.Partial("~/Views/Coaches/_CoachProfileViewModel.cshtml", coach)
+                @Html.Partial("~/Views/Coaches/_CoachSimpleView.cshtml", coach)
             }
         </ul>
     </div>
     <div class="col-md-4 home-list">
         <h2>Top offers</h2>
         <ul class="list-group">
-            <li class="list-group-item">
-            </li>
+                @foreach (var offer in Model.TopOffers)
+                {
+                    @Html.Partial("~/Views/Offers/_OfferSimpleView.cshtml", offer)
+                }
         </ul>
     </div>
     <div class="col-md-4 home-list">
-        <h2>The latest offers</h2>
+        <h2 class="blink">Latest offers</h2>
         <ul class="list-group">
-            <li class="list-group-item">
-            </li>
+                @foreach (var offer in Model.LatestOffers)
+                {
+                    @Html.Partial("~/Views/Offers/_OfferSimpleView.cshtml", offer)
+                }
         </ul>
     </div>
 </div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/AppScripts/blink.js")
+}

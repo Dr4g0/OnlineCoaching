@@ -12,6 +12,11 @@ namespace OnlineCoaching.ViewModels.Offer
 {
     public class OfferViewModel : IMapFrom<OnlineCoaching.Models.Offer>
     {
+        public OfferViewModel()
+        {
+            this.Rating = 0;
+        }
+
         public int ID { get; set; }
 
         [Required]
@@ -32,6 +37,8 @@ namespace OnlineCoaching.ViewModels.Offer
 
         public bool IsNewCategory { get; set; }
 
+        public ICollection<AppUser> Joiners { get; set; }
+
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
         public virtual ICollection<OnlineCoaching.Models.Comment> Comments { get; set; }
@@ -45,5 +52,7 @@ namespace OnlineCoaching.ViewModels.Offer
         public DateTime DateCreated { get; set; }
 
         public IQueryable<CategorySimpleViewModel> Categories { get; set; }
+
+        public double Rating { get; set; }
     }
 }

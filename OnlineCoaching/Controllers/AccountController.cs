@@ -163,7 +163,7 @@ namespace OnlineCoaching.Controllers
             {
                 var user = new AppUser
                 {
-                    UserName = model.Username,
+                    //UserName = model.Username,
                     Email = model.Email,
                     IsCoach = model.IsCoach,
                 };

@@ -22,6 +22,5 @@
 
         public RatingFactory RatingFactory { get { return new RatingFactory(db); } }
 
-
     }
 }

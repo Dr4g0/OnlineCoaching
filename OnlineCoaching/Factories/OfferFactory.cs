@@ -16,20 +16,20 @@
             this.db = db;
         }
 
-        public IQueryable<Offer> GetTopFiveOffers()
+        public IQueryable<OfferViewModel> GetTopFiveOffers()
         {
             return this.db.Offers
                 .All()
-                .OrderByDescending(u => u.GetOfferRating())
-                .Take(5);
+                .OrderByDescending(o => o.Rating)
+                .Take(5).Project().To<OfferViewModel>();
         }
 
-        public IQueryable<Offer> GetLatestFiveOffers()
+        public IQueryable<OfferViewModel> GetLatestFiveOffers()
         {
             return this.db.Offers
                 .All()
                 .OrderByDescending(u => u.DateCreated)
-                .Take(5);
+                .Take(5).Project().To<OfferViewModel>();
         }
         public IQueryable<OfferViewModel> GetAll()
         {
@@ -45,6 +45,7 @@
 
         public void Update(Offer offer)
         {
+            offer.Rating = offer.GetOfferRating();
             this.db.Offers.Update(offer);
             this.db.SaveChanges();
         }
