@@ -36,5 +36,11 @@
             return this.db.Users.All()
                 .FirstOrDefault(u => u.Id == id);
         }
+
+        public void Update(AppUser coach)
+        {
+            this.db.Users.Update(coach);
+            this.db.SaveChanges();
+        }
     }
 }

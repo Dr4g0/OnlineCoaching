@@ -10,15 +10,15 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineCoaching.Models;
 using OnlineCoaching.ViewModels.Account;
-using System.IO;
 using OnlineCoaching.Factories;
+using System.IO;
 
 namespace OnlineCoaching.Controllers
 {
     [Authorize]
-    public class AccountController : BaseController
+    public class AccountController : Controller
     {
-        private string currentPort = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+         private string currentPort = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
         private const string UploadUserPicturesDir = "~/Uploads/UsersPictures";
         private ApplicationUserManager _userManager;
         private LevelFactory levelFactory;
@@ -28,7 +28,7 @@ namespace OnlineCoaching.Controllers
             this.levelFactory = new BaseFactory().LevelFactory;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -130,7 +130,7 @@ namespace OnlineCoaching.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -163,7 +163,7 @@ namespace OnlineCoaching.Controllers
             {
                 var user = new AppUser
                 {
-                    //UserName = model.Username,
+                    UserName = model.Email,
                     Email = model.Email,
                     IsCoach = model.IsCoach,
                 };
@@ -171,7 +171,7 @@ namespace OnlineCoaching.Controllers
                 if (user.IsCoach)
                 {
                     model.CoachingLevelID = this.levelFactory.GetLowestLevel().ID;
-                    user.CoachingLevelID=model.CoachingLevelID;
+                    user.CoachingLevelID = model.CoachingLevelID;
                     user.Age = model.Age;
                     user.AboutMe = model.AboutMe;
                     if (model.PictureUpload != null && model.PictureUpload.ContentLength > 0)
@@ -202,8 +202,6 @@ namespace OnlineCoaching.Controllers
                 }
                 AddErrors(result);
             }
-
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 

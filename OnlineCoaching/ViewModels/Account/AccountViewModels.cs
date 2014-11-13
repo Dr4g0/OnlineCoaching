@@ -57,11 +57,6 @@ namespace OnlineCoaching.ViewModels.Account
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Username")]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        public string Username { get; set; }
-
-        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -72,7 +67,6 @@ namespace OnlineCoaching.ViewModels.Account
 
     public class RegisterViewModel : IValidatableObject
     {
-     
 
         [Required]
         [EmailAddress]
@@ -80,20 +74,36 @@ namespace OnlineCoaching.ViewModels.Account
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm Password")]
+        [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        //[Required]
+        //[EmailAddress]
+        //[Display(Name = "Email")]
+        //public string Email { get; set; }
+
+        //[Required]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        //[Display(Name = "Username")]
+        //public string Username { get; set; }
+
+        //[Required]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Password")]
+        //public string Password { get; set; }
+
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Confirm Password")]
+        //[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        //public string ConfirmPassword { get; set; }
 
         [Display(Name = "Are You a Coach?")]
         public bool IsCoach { get; set; }

@@ -25,7 +25,7 @@ namespace OnlineCoaching.ViewModels.Offer
         [Required]
         public string Description { get; set; }
 
-        public int CoachID { get; set; }
+        public string CoachID { get; set; }
 
         [Required]
         public virtual CoachProfileViewModel Coach { get; set; }

@@ -72,7 +72,7 @@ namespace OnlineCoaching.Controllers
                 {
                     Title = model.Title,
                     Description = model.Description,
-                    Coach = coach,
+                    CoachID=coach.Id,
                     CoachingCategoryID = model.CoachingCategoryID,
                     CoachingCategory = category
                 };
@@ -90,6 +90,8 @@ namespace OnlineCoaching.Controllers
                 }
 
                 this.offerFactory.Add(newOffer);
+                coach.Offers.Add(newOffer);
+                this.coachFactory.Update(coach);
                 TempData["Success"] = "A new offer '" + newOffer.Title + "' was created";
                 return RedirectToAction("Index");
             }

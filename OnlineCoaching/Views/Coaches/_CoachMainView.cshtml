@@ -1,0 +1,52 @@
+﻿@model OnlineCoaching.ViewModels.Coach.CoachProfileViewModel
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>
+            Username: @Model.Username
+        </h2>
+        <div class="row coach-level-container">
+            <h3 class="col-md-2 helper">Level: </h3>
+            <div>
+                <span></span>
+                <img src="@Model.CoachingLevel.ImageURL" class="img-responsive coach-view-level-image pull-left col-md-2" title="@Model.CoachingLevel.Name" />
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="col-md-4">Age: @Model.Age</h3>
+        </div>
+        <div class="row">
+            <h3 class="col-md-4">Rating: @Model.CoachRating</h3>
+        </div>
+        <div class="row">
+            <h3 class="col-md-4">Certificates: </h3>
+            <div class="col-md-8">
+                <ul class="list-group">
+                    @foreach (var certificate in Model.Certificates)
+                    {
+                        <li class="list-group-item">
+                            @certificate.Title
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h2>About me:</h2>
+        <h4>@Model.AboutMe</h4>
+    </div>
+    <img class="col-md-6 coach-view-picture pull-right" src="@Model.PictureURL" />
+</div>
+<div class="row">
+    <h2 class="col-md-4">Offers: </h2>
+    <div class="col-md-8">
+        <ul class="list-group">
+            @foreach (var offer in Model.Offers)
+            {
+                var offerModel = AutoMapper.Mapper.Map<OnlineCoaching.ViewModels.Offer.OfferViewModel>(offer);
+                @Html.Partial("~/Views/Offers/_OfferSimpleView.cshtml", offerModel)
+            }
+        </ul>
+    </div>
+</div>

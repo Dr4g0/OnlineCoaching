@@ -1,40 +1,42 @@
 ﻿@model OnlineCoaching.ViewModels.Coach.CoachProfileViewModel
-<a href="~/Coaches/View/@Model.ID">
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col-md-9">
-                Username: <strong>@Model.Username</strong>
+<div class="coach-simple-wrapper">
+    <a href="~/Coaches/View/@Model.ID">
+        <div class="list-group-item">
+            <div class="row">
+                <div class="col-md-8">
+                    Username: <strong>@Model.Username</strong>
+                </div>
+                <div class="col-md-4">
+                    Rating: @Model.CoachRating
+                </div>
             </div>
-            <div class="col-md-3">
-                Rating: @Model.CoachRating
-            </div>
-        </div>
-        <img src="@Model.PictureURL" class="coach-picture"/>
-        <div class="row">
-            <div class="col-md-6">
-                Age: @Model.Age
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-4">
-                        Level:
-                    </div>
-                    <div class="col-md-8 pull-left">
-                        <img src="@Model.CoachingLevel.ImageURL" title="@Model.CoachingLevel.Name" class="level-images-home"/>
+            <img src="@Model.PictureURL" class="coach-picture" />
+            <div class="row">
+                <div class="col-md-6">
+                    Age: @Model.Age
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            Level:
+                        </div>
+                        <div class="col-md-8 pull-left">
+                            <img src="@Model.CoachingLevel.ImageURL" title="@Model.CoachingLevel.Name" class="level-images-home" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                Certificates: @Model.Certificates.Count()
+            <div class="row">
+                <div class="col-md-6">
+                    Certificates: @Model.Certificates.Count()
+                </div>
+                <div class="col-md-6">
+                    Offers: @Model.Offers.Count()
+                </div>
             </div>
-            <div class="col-md-6">
-                Offers: @Model.Offers.Count()
+            <div>
+                Skills: @Model.AboutMe
             </div>
         </div>
-        <div>
-            Skills: @Model.AboutMe
-        </div>
-    </li>
-</a>
+    </a>
+</div>

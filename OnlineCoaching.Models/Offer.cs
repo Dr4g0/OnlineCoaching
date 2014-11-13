@@ -26,7 +26,7 @@
         [Required]
         public string  Description { get; set; }
 
-        public int CoachID { get; set; }
+        public string CoachID { get; set; }
 
         [Required]
         public virtual AppUser Coach { get; set; }
