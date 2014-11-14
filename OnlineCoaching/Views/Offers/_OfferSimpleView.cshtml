@@ -11,6 +11,9 @@
                 </div>
             </div>
             <img src="@Model.OfferPictureURL" alt="No picture" class="offer-picture" />
+            <div>
+                Description: @(@Model.Description.Length>100 ? @Model.Description.Substring(0,100)+"..." : @Model.Description)
+            </div>
             <div class="row">
                 <div class="col-md-9">
                     Coach: @Model.Coach.Username

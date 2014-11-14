@@ -240,6 +240,7 @@
     <Content Include="Content\images\HomePage\coach.jpg" />
     <Content Include="Content\images\HomePage\deal.jpg" />
     <Content Include="Content\images\HomePage\peak.jpg" />
+    <Content Include="Content\images\Offer\default-offer.jpg" />
     <Content Include="Content\images\Rating\rating-star.png" />
     <Content Include="Content\kendo\Black\editor.png" />
     <Content Include="Content\kendo\Black\imagebrowser.png" />

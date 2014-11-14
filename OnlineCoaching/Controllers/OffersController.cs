@@ -21,6 +21,7 @@ namespace OnlineCoaching.Controllers
     {
         private string currentPort = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
         private const string UploadLevelImagesDir = "~/Uploads/OfferImages";
+        private const string DefaultPicture = "Content/images/Offer/default-offer.jpg";
         private OfferFactory offerFactory;
         private CategoryFactory categoryFactory;
         private CoachFactory coachFactory;
@@ -64,6 +65,11 @@ namespace OnlineCoaching.Controllers
                 ModelState["CoachingCategory"].Errors.Clear();
             }
 
+            if (ModelState["ID"].Errors.Count == 1)
+            {
+                ModelState["ID"].Errors.Clear();
+            }
+
             if (ModelState.IsValid)
             {
                 var coach = this.coachFactory.GetById(this.User.Identity.GetUserId());
@@ -87,6 +93,11 @@ namespace OnlineCoaching.Controllers
                     var imageUrl = Path.Combine(this.currentPort, UploadLevelImagesDir.Substring(2), model.ImageUpload.FileName);
                     model.ImageUpload.SaveAs(imagePath);
                     newOffer.OfferPictureURL = imageUrl;
+                }
+
+                else
+                {
+                    newOffer.OfferPictureURL = Path.Combine(this.currentPort, DefaultPicture);
                 }
 
                 this.offerFactory.Add(newOffer);
