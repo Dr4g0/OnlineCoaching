@@ -200,12 +200,16 @@ span.k-link {
     max-width: 320px;
 }
 
+    .coach-simple-wrapper a {
+        text-decoration: none;
+        color: black;
+    }
+
 .offer-simple-wrapper {
     max-width: 450px;
 }
 
-.offer-picture{
-    width:100px;
-    height:100px;
+.offer-picture {
+    width: 100px;
+    height: 100px;
 }
-

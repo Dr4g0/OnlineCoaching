@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OnlineCoaching.ViewModels.CoachingLevel.CoachingLevelViewModel>
+
+@{
+    ViewBag.Title = "Level Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>All levels</h4>
+
+@if (TempData["Success"] != null)
+    {
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                @TempData["Success"].ToString()
+            </div>
+        </div>
+    }
+    
+<div class="index-grid">
+    @(Html.Kendo().Grid(Model)
+        .Name("levelGrid")
+        .Columns(columns =>
+        {
+            columns.Bound(l => l.ID).Width(50);
+            columns.Bound(l => l.Name).Width(150);
+            columns.Bound(l => l.Rank).Width(100);
+            columns.Template(@<img src="@item.ImageURL"/>).Title("Image").Width(100);
+            columns.Template(@<a href="~/Levels/Edit/@item.ID" class="btn btn-info btn-sm">Edit</a>).Width(100);
+            columns.Template(@<a href="~/Levels/Delete/@item.ID" class="btn btn-danger btn-sm">Delete</a>).Width(100);
+        })
+        .Sortable()
+        .Pageable()
+        .Filterable()
+        .Groupable())
+</div>
+<br />
+<a href="~/Levels/Create" class="btn btn-success">Create level</a>
+
+

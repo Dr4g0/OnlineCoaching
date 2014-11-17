@@ -174,6 +174,7 @@ namespace OnlineCoaching.Controllers
                     user.CoachingLevelID = model.CoachingLevelID;
                     user.Age = model.Age;
                     user.AboutMe = model.AboutMe;
+                    
                     if (model.PictureUpload != null && model.PictureUpload.ContentLength > 0)
                     {
                         if (!Directory.Exists(Server.MapPath(UploadUserPicturesDir)))
@@ -197,7 +198,10 @@ namespace OnlineCoaching.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    if (user.IsCoach)
+                    {
+                        this.UserManager.AddToRole(user.Id, "coach");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);

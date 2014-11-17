@@ -1,0 +1,37 @@
+﻿@model IEnumerable<OnlineCoaching.ViewModels.Rating.RatingViewModel>
+
+@{
+    ViewBag.Title = "Rating Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>All ratings</h4>
+
+@if (TempData["Success"] != null)
+{
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            @TempData["Success"].ToString()
+        </div>
+    </div>
+}
+
+<div class="index-grid">
+    @(Html.Kendo().Grid(Model)
+        .Name("ratingGrid")
+        .Columns(columns =>
+        {
+            columns.Bound(l => l.ID).Width(50);
+            columns.Bound(l => l.Name).Width(150);
+            columns.Bound(l => l.Value).Width(150);
+            columns.Template(@<a href="~/Ratings/Edit/@item.ID" class="btn btn-info btn-sm">Edit</a>).Width(100);
+            columns.Template(@<a href="~/Ratings/Delete/@item.ID" class="btn btn-danger btn-sm">Delete</a>).Width(100);
+        })
+            .Sortable()
+            .Pageable()
+            .Filterable()
+            .Groupable())
+</div>
+<br />
+<a href="~/Ratings/Create" class="btn btn-success">Create rating</a>

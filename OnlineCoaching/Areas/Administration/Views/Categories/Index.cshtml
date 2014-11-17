@@ -1,0 +1,38 @@
+﻿@model IEnumerable<OnlineCoaching.ViewModels.CoachingCategory.CategoryViewModel>
+
+@{
+    ViewBag.Title = "Category Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>All categories</h4>
+
+@if (TempData["Success"] != null)
+    {
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                @TempData["Success"].ToString()
+            </div>
+        </div>
+    }
+    
+<div id="category-index-grid">
+    @(Html.Kendo().Grid(Model)
+        .Name("categoryGrid")
+        .Columns(columns =>
+        {
+            columns.Bound(l => l.ID).Width(50);
+            columns.Bound(l => l.Name).Width(150);
+            columns.Template(@<a href="~/Categories/Edit/@item.ID" class="btn btn-info btn-sm">Edit</a>).Width(100);
+            columns.Template(@<a href="~/Categories/Delete/@item.ID" class="btn btn-danger btn-sm">Delete</a>).Width(100);
+        })
+            .Sortable()
+            .Pageable()
+            .Filterable()
+            .Groupable())
+</div>
+<br />
+<a href="~/Categories/Create" class="btn btn-success">Create category</a>
+
+

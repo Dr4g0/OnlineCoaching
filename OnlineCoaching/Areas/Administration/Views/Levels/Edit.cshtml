@@ -1,0 +1,51 @@
+﻿@model OnlineCoaching.ViewModels.CoachingLevel.CoachingLevelViewModel
+
+@{
+    ViewBag.Title = "Level Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "Levels", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Edit level</h4>
+    
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(l => l.Name, new { @class = "col-md-2 control-label"  })
+        <div class="col-md-10">
+            @Html.TextBoxFor(l => l.Name, new { @class = "form-control", @autofocus = true })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Rank, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(l => l.Rank, new { @class = "form-control", @type = "number" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.ImageURL, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(l => l.ImageURL, new { @class = "form-control", @style = "display:none" })
+            <img src="@Model.ImageURL" />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.ImageUpload, "New Image", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(l => l.ImageUpload, new { @class = "col-md-10 form-control", @type = "file" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-info" value="Save changes" />
+            <a href="~/Levels/Index" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}

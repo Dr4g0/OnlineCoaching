@@ -20,10 +20,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Online Coaching", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Online Coaching", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+            <div class="navbar-collapse collapse" >
+                <ul class="nav navbar-nav" id='menu'>
+                    <li>@Html.ActionLink("AllOffers", "Index", "Offers")</li>
+                    <li>@Html.ActionLink("AllCoaches", "Index", "Coaches")</li>
+                    @if (User.IsInRole("coach") || User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("CreateOffer", "Create", "Offers")</li>
+                    }
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>
+                            Administration
+                            <ul>
+                                <li>@Html.ActionLink("AllUsers", "Index", "Users", new { area = "Administration" }, null)</li>
+                                <li>@Html.ActionLink("AllOffers", "Index", "Offers", new { area = "Administration" }, null)</li>
+                                <li>@Html.ActionLink("AllLevels", "Index", "Levels", new { area = "Administration" }, null)</li>
+                                <li>@Html.ActionLink("AllRatings", "Index", "Ratings", new { area = "Administration" }, null)</li>
+                                <li>@Html.ActionLink("AllComments", "Index", "Comments", new { area = "Administration" }, null)</li>
+                                <li>@Html.ActionLink("AllCategories", "Index", "Categories", new { area = "Administration" }, null)</li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -40,5 +61,10 @@
     @Scripts.Render("~/bundles/kendo")
 
     @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+            $('#menu').kendoMenu();
+        })
+    </script>
 </body>
 </html>

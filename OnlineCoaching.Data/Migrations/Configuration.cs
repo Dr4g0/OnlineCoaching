@@ -1,9 +1,10 @@
 namespace OnlineCoaching.Data.Migrations
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using OnlineCoaching.Data;
 
     public sealed class Configuration : DbMigrationsConfiguration<OnlineCoaching.Data.OnlineCoachingDbContext>
     {
@@ -13,20 +14,16 @@ namespace OnlineCoaching.Data.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(OnlineCoaching.Data.OnlineCoachingDbContext context)
+        protected override void Seed(OnlineCoachingDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            this.SeedRoles(context);
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        private void SeedRoles(OnlineCoachingDbContext context)
+        {
+            context.Roles.AddOrUpdate(x => x.Name, new IdentityRole("admin"));
+            context.Roles.AddOrUpdate(x => x.Name, new IdentityRole("coach"));
+            context.SaveChanges();
         }
     }
 }

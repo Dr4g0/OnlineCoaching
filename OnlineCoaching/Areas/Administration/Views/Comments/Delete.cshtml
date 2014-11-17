@@ -1,0 +1,34 @@
+﻿@model OnlineCoaching.ViewModels.Comment.CommentViewModel
+
+@{
+    ViewBag.Title = "Comment page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Delete", "Comments", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Delete comment</h4>
+    <hr />
+    <h4 class="panel panel-body panel-danger">Are you sure you want to delete this rating ?</h4>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Content, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(c => c.Content, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Offer.Title, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(c => c.Offer.Title, new { @class = "form-control",  @readonly = "readonly" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-danger" value="Delete comment" />
+            <a href="~/Comments/Index" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+}
+
